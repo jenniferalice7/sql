@@ -56,6 +56,38 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 ```
 Your answer...
 ```
+## Prompt 3 Assignment2 Answers
+### Customer Table
+- Create a 'customer' table with the following dimensions:
+  - customer_id (primary key)
+  _ address_id (foreign key)
+  _ customer_last_name
+  _ customer_first_name
+  _ customer_since
+  _ contact_number
+  _ email_address
+### Architecture 1: Overwrite Changes (Type 1) 
+-Create a table 'customer_address_current' with the following dimensions:
+  - address_id (primary key)
+  - customer_id (foreign key to 'customer' table)
+  - city
+  - region
+  - postal_code
+  - date_updated
+**This simply updates the address to the most current and will not retain any history**
+### Architecture 2: Retain Changes (Type 2)
+- Create a 'customer_address_history' table with the following dimensions:
+  - address_id (Primary Key)
+  - customer_id (Foreign Key to 'customer' table)
+  - address
+  - city
+  - region
+  - postal_code
+  - start_date
+  - end_date
+**Each time a customer's address changes, a new record is created with a new start_date and a NULL end_date until they move to a new address again. This keeps the history of each customer's addresses.**
+
+---
 
 ***
 
